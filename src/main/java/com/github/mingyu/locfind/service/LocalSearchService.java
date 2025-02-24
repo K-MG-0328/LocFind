@@ -20,8 +20,8 @@ public class LocalSearchService {
     private final KakaoLocalSearchService kakaoLocalSearchService;
     private final NaverLocalSearchService naverLocalSearchService;
 
-    public List<PlaceDto> searchKeyword(String query, int size) {
-        KakaoSearchResponse kakao =  kakaoLocalSearchService.searchKeyword(query, size);
+    public List<PlaceDto> searchKeyword(String query, String size, String x, String y) {
+        KakaoSearchResponse kakao =  kakaoLocalSearchService.searchKeyword(query, size, x, y);
         NaverSearchResponse naver =  naverLocalSearchService.searchKeyword(query, size);
 
         List<PlaceDto> kakaoList = new ArrayList<>();

@@ -27,23 +27,29 @@ public class SearchController {
 
 
     @GetMapping("/search")
-    public ResponseEntity<List<PlaceDto>> searchKeyword(@RequestParam String query, @RequestParam(defaultValue = "5") int size) {
-        List<PlaceDto> response = localSearchService.searchKeyword(query, size);
+    public ResponseEntity<List<PlaceDto>> searchKeyword(@RequestParam String query,
+                                                        @RequestParam(defaultValue = "5") String size,
+                                                        @RequestParam(defaultValue = "126.99597295767953") String x,
+                                                        @RequestParam(defaultValue = "35.97664845766847") String y) {
+        List<PlaceDto> response = localSearchService.searchKeyword(query, size, x, y);
         return ResponseEntity.ok(response);
     }
 
 
     @GetMapping("/kakaoSearch")
     public ResponseEntity<KakaoSearchResponse> searchKaKaoKeyword(@RequestParam String query,
-                                                             @RequestParam(defaultValue = "5") int size) {
-        KakaoSearchResponse response = kakaoLocalSearchService.searchKeyword(query, size);
+                                                                  @RequestParam(defaultValue = "5") String size,
+                                                                  @RequestParam(defaultValue = "126.99597295767953") String x,
+                                                                  @RequestParam(defaultValue = "35.97664845766847") String y
+    ) {
+        KakaoSearchResponse response = kakaoLocalSearchService.searchKeyword(query, size, x, y);
         return ResponseEntity.ok(response);
     }
 
 
     @GetMapping("/naverSearch")
     public ResponseEntity<NaverSearchResponse> searchNaverKeyword(@RequestParam String query,
-                                                             @RequestParam(defaultValue = "5") int display) {
+                                                                  @RequestParam(defaultValue = "5") String display) {
         NaverSearchResponse response = naverLocalSearchService.searchKeyword(query, display);
         return ResponseEntity.ok(response);
     }

@@ -26,7 +26,7 @@ public class NaverLocalSearchService {
     /**
      *  로컬 키워드 검색을 호출하는 메서드
      */
-    public NaverSearchResponse searchKeyword(String query, int display) {
+    public NaverSearchResponse searchKeyword(String query, String display) {
 
         RestTemplate restTemplate = new RestTemplate();
 

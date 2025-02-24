@@ -21,7 +21,7 @@ public class KakaoLocalSearchService {
     /**
      * 로컬 키워드 검색을 호출하는 메서드
      */
-    public KakaoSearchResponse searchKeyword(String query, int size) {
+    public KakaoSearchResponse searchKeyword(String query, String size, String x, String y) {
 
         RestTemplate restTemplate = new RestTemplate();
 
@@ -31,6 +31,8 @@ public class KakaoLocalSearchService {
         String url = UriComponentsBuilder.fromHttpUrl(KAKAO_LOCAL_SEARCH_URL)
                 .queryParam("query", query)
                 .queryParam("size", size)
+                .queryParam("x", x)
+                .queryParam("y", y)
                 .build()
                 .toUriString();
 

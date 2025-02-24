@@ -13,8 +13,8 @@ public class PlaceDto {
     private String roadAddress;
     private String phone;
     private String category;
-    private double x;
-    private double y;
+    private String x;
+    private String y;
 
     public PlaceDto(KakaoSearchResponse.Document doc) {
         this.name = doc.getPlaceName();
@@ -22,8 +22,8 @@ public class PlaceDto {
         this.roadAddress = doc.getRoadAddressName();
         this.phone = doc.getPhone();
         this.category = doc.getCategoryName();
-        this.x = Double.parseDouble(doc.getX());
-        this.y = Double.parseDouble(doc.getY());
+        this.x = doc.getX();
+        this.y = doc.getY();
     }
 
     public PlaceDto(NaverSearchResponse.item item) {
@@ -32,7 +32,7 @@ public class PlaceDto {
         this.roadAddress = item.getRoadAddress();
         this.phone = item.getTelephone();
         this.category = item.getCategory();
-        this.x = Double.parseDouble(item.getMapx());
-        this.y = Double.parseDouble(item.getMapy());
+        this.x = item.getMapx();
+        this.y = item.getMapy();
     }
 }
