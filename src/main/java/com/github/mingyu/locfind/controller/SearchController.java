@@ -1,8 +1,8 @@
 package com.github.mingyu.locfind.controller;
 
 import com.github.mingyu.locfind.dto.KakaoSearchResponse;
+import com.github.mingyu.locfind.dto.LocalSearchResponse;
 import com.github.mingyu.locfind.dto.NaverSearchResponse;
-import com.github.mingyu.locfind.dto.PlaceDto;
 import com.github.mingyu.locfind.service.KakaoLocalSearchService;
 import com.github.mingyu.locfind.service.LocalSearchService;
 import com.github.mingyu.locfind.service.NaverLocalSearchService;
@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping
@@ -27,11 +25,13 @@ public class SearchController {
 
 
     @GetMapping("/search")
-    public ResponseEntity<List<PlaceDto>> searchKeyword(@RequestParam String query,
+    public ResponseEntity<LocalSearchResponse> searchKeyword(@RequestParam String query,
                                                         @RequestParam(defaultValue = "5") String size,
                                                         @RequestParam(defaultValue = "126.99597295767953") String x,
                                                         @RequestParam(defaultValue = "35.97664845766847") String y) {
-        List<PlaceDto> response = localSearchService.searchKeyword(query, size, x, y);
+
+
+        LocalSearchResponse response = localSearchService.searchKeyword(query, size, x, y);
         return ResponseEntity.ok(response);
     }
 
